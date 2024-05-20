@@ -1,0 +1,48 @@
+Explicación del Sistema de Login en PHP
+Este sistema de login en PHP permite a los usuarios autenticarse utilizando un formulario web. Aquí tienes una explicación paso a paso de lo que se ha implementado:
+
+1. Creación de la Base de Datos y la Tabla de Usuarios
+Primero, se crea una base de datos llamada sistema y una tabla llamada usuarios donde se almacenarán los datos de los usuarios. Las contraseñas se guardan usando SHA1 para mayor seguridad.
+
+Crear la base de datos: Se crea una base de datos llamada sistema.
+Seleccionar la base de datos: Se selecciona la
+Explicación del Sistema de Login en PHP
+Este sistema de login en PHP permite a los usuarios autenticarse utilizando un formulario web. Aquí tienes una explicación paso a paso de lo que se ha implementado:
+
+1. Creación de la Base de Datos y la Tabla de Usuarios
+Primero, se crea una base de datos llamada sistema y una tabla llamada usuarios donde se almacenarán los datos de los usuarios. Las contraseñas se guardan usando SHA1 para mayor seguridad.
+
+Crear la base de datos: Se crea una base de datos llamada sistema.
+Seleccionar la base de datos: Se selecciona la base de datos sistema para trabajar con ella.
+Eliminar la tabla existente (si aplica): Se elimina la tabla usuarios si ya existe, para asegurar que estamos creando una nueva tabla desde cero.
+Crear la tabla de usuarios: Se crea la tabla usuarios con columnas para ID, login, contraseña (encriptada con SHA1) y nombre.
+Insertar usuarios de ejemplo: Se insertan usuarios de ejemplo en la tabla con contraseñas encriptadas.
+2. Formulario de Inicio de Sesión (index.php)
+El archivo index.php contiene un formulario HTML para que los usuarios ingresen su login y contraseña. También incluye un poco de CSS para mejorar la apariencia visual de la página.
+
+Formulario HTML: Los campos login y password recogen la información del usuario.
+CSS: Se utiliza para estilizar el formulario y hacerlo visualmente atractivo.
+Mensaje de error: Se muestra si las credenciales son incorrectas, indicándolo con un mensaje en rojo.
+3. Procesamiento del Login (login.php)
+El archivo login.php procesa la información del formulario, verifica las credenciales contra la base de datos y redirige al usuario según el resultado.
+
+Conexión a la base de datos: Se establece una conexión con la base de datos MySQL.
+Preparación y ejecución de consulta: Se prepara y ejecuta una consulta SQL para verificar el login y la contraseña del usuario.
+Verificación del resultado: Si se encuentra un usuario con las credenciales correctas, se inicia una sesión y se redirige al usuario a welcome.php. Si no, se redirige al usuario de vuelta a index.php con un mensaje de error.
+4. Página de Bienvenida (welcome.php)
+El archivo welcome.php muestra un mensaje de bienvenida al usuario si el login es exitoso.
+
+Verificación de sesión: Comprueba si hay una sesión iniciada; si no la hay, redirige al usuario a index.php.
+Mensaje de bienvenida: Muestra el login del usuario autenticado.
+Enlace de cierre de sesión: Proporciona un enlace para que el usuario pueda cerrar sesión.
+5. Cierre de Sesión (logout.php)
+El archivo logout.php destruye la sesión y redirige al usuario de vuelta a la página de login.
+
+Destrucción de la sesión: Finaliza la sesión actual.
+Redirección: Envía al usuario de vuelta a la página de login (index.php).
+Resumen
+Base de datos: Una base de datos MySQL con una tabla de usuarios cuyas contraseñas están encriptadas con SHA1.
+Formulario HTML: Una página con un formulario de login estilizado con CSS.
+PHP para procesar el login: Verifica las credenciales contra la base de datos y maneja la sesión del usuario.
+Página de bienvenida: Muestra un mensaje de bienvenida al usuario autenticado.
+Cierre de sesión: Permite al usuario cerrar su sesión de manera segura.
