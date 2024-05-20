@@ -1,0 +1,98 @@
+/* SCRIPT DE LA BASE DE DATOS */
+
+CREATE DATABASE IF NOT EXISTS escuela_computacion;
+USE escuela_computacion;
+
+CREATE TABLE IF NOT EXISTS estudiantes (
+    expediente INT PRIMARY KEY,
+    nombre VARCHAR(100),
+    localidad VARCHAR(50),
+    fecha_nac DATE,
+    direccion VARCHAR(100),
+    curso INT,
+    nivel VARCHAR(20),
+    faltas INT
+);
+
+INSERT INTO estudiantes (expediente, nombre, localidad, fecha_nac, direccion, curso, nivel, faltas) VALUES
+(123456, 'Juan Miguel Soler Bakero', 'Murcia', '1995-10-10', 'Gran Vía, 2, 4A', 1, 'ESO', 15),
+(654321, 'Laura Gómez Fernández', 'Lorca', '1994-10-05', 'Junterones, 10, 5B', 2, 'ESO', 25),
+(765432, 'Beatriz Martínez Hernández', 'Murcia', '1993-05-05', 'Plaza Mayor, 6, 3B', 3, 'ESO', 5),
+(987654, 'Diego Marín Llorente', 'Alhama de Murcia', '1990-03-06', 'Diego de la Cierva, 5, 7A', 1, 'BACHILLER', 34),
+(445544, 'Juan Francisco Cano Riquelme', 'Murcia', '1992-01-07', 'Plaza de Belluga, 3, 4A', 4, 'ESO', 13),
+(223322, 'Raquel Riquelme Rubio', 'Lorca', '1990-11-23', 'San Juan, 14, 3B', 1, 'BACHILLER', 7),
+(9988877, 'Cristina Sánchez Bermejo', 'Murcia', '1995-03-19', 'Torre de Romo, 7', 1, 'ESO', 1),
+(334455, 'Pedro Jesús Rodríguez Soler', 'Alhama de Murcia', '1994-10-03', 'Camino de Badel, 4', 2, 'ESO', 11),
+(334400, 'Javier Ramírez Rodríguez', 'Murcia', '1993-05-27', 'Gran Vía, 4, 3A', 3, 'ESO', 0),
+(993322, 'Gema Rubio Colero', 'Lorca', '1992-09-09', 'Plaza Fuensanta, 5, 7A', 1, 'BACHILLER', 19),
+(554411, 'Joaquín Hernández González', 'Lorca', '1991-12-12', 'Junterones, 4, 5A', 2, 'BACHILLER', 14);
+
+/* FIN DEL SCRIPT DE LA BASE DE DATOS */
+
+SELECT * FROM estudiantes;
+
+SELECT nombre, localidad, fecha_nac FROM estudiantes;
+
+SELECT nombre AS Nombre_y_Apellidos FROM estudiantes;
+
+SELECT nombre AS Nombre_y_Apellidos, faltas * 2 AS Faltas_de_Asistencia FROM estudiantes;
+
+SELECT * FROM estudiantes WHERE localidad = 'Murcia' OR localidad = 'Alhama de Murcia';
+
+SELECT * FROM estudiantes WHERE localidad = 'Murcia' AND nivel = 'ESO' AND curso = 1;
+
+SELECT * FROM estudiantes WHERE localidad = 'Lorca' AND nivel = 'BACHILLER' AND curso = 2 AND faltas > 10;
+
+SELECT * FROM estudiantes WHERE localidad = 'Murcia' ORDER BY nombre;
+
+SELECT nombre, nivel, curso FROM estudiantes ORDER BY nivel, curso;
+
+SELECT * FROM estudiantes WHERE faltas > 10 AND (curso = 1 OR curso = 2);
+
+SELECT * FROM estudiantes WHERE localidad = 'Murcia' AND (curso = 3 OR curso = 4) AND faltas < 10;
+
+SELECT DISTINCT curso FROM estudiantes;
+
+SELECT * FROM estudiantes WHERE nivel = 'ESO' AND curso = 1 AND faltas < 10;
+
+SELECT * FROM estudiantes WHERE nombre LIKE '%o' AND localidad = 'Murcia';
+
+SELECT * FROM estudiantes WHERE nombre LIKE '%u%' AND nivel = 'ESO' AND curso = 1;
+
+SELECT * FROM estudiantes WHERE faltas IS NULL;
+
+SELECT * FROM estudiantes WHERE faltas BETWEEN 10 AND 20 ORDER BY nombre;
+
+SELECT * FROM estudiantes WHERE faltas BETWEEN 10 AND 20 AND localidad = 'Murcia';
+
+SELECT * FROM estudiantes WHERE faltas BETWEEN 10 AND 20 AND localidad = 'Murcia' AND nivel = 'ESO' AND curso = 1;
+
+SELECT * FROM estudiantes WHERE faltas < 10 OR faltas > 20;
+
+SELECT * FROM estudiantes WHERE YEAR(fecha_nac) BETWEEN 1993 AND 1994 ORDER BY nombre;
+
+SELECT * FROM estudiantes WHERE nivel IN ('ESO', 'BACHILLER') AND curso IN (1, 2);
+
+SELECT * FROM estudiantes WHERE localidad IN ('Murcia') AND curso IN (3, 4);
+
+SELECT * FROM estudiantes WHERE nivel != 'ESO' ORDER BY curso DESC, nombre DESC;
+
+SELECT * FROM estudiantes WHERE nivel != 'BACHILLER' AND curso IN (1, 2) ORDER BY nombre;
+
+SELECT * FROM estudiantes WHERE nombre LIKE 'J%' AND faltas > 10 AND nivel != 'BACHILLER' ORDER BY curso, nombre;
+
+SELECT expediente, nombre, curso, nivel FROM estudiantes WHERE nivel != 'BACHILLER' ORDER BY curso ASC, nivel ASC, nombre DESC;
+
+SELECT UPPER(nombre) FROM estudiantes WHERE localidad = 'Murcia';
+
+SELECT UPPER(nombre) AS Nombre, LOWER(localidad) AS Localidad FROM estudiantes ORDER BY localidad;
+
+SELECT UPPER(nombre) AS Nombre, LOWER(localidad) AS Localidad, REPLACE(nivel, 'BACHILLER', 'Bachillerato') AS Nivel FROM estudiantes;
+
+SELECT nombre, LENGTH(nombre) AS Longitud FROM estudiantes;
+
+SELECT nombre, YEAR(fecha_nac) AS Anio, MONTH(fecha_nac) AS Mes FROM estudiantes;
+
+SELECT nombre, YEAR(fecha_nac) - 2011 AS Edad FROM estudiantes;
+
+SELECT * FROM estudiantes;
