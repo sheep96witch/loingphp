@@ -1,0 +1,35 @@
+
+      h1{
+
+    font-weight: normal; font-weight: normal; font-weight: normal; font-weight: normal;/* Hacer que el título no esté en negrita */
+      }
+      body {
+            background-color: white; /* Color de fondo de la página */
+             font-family: Arial, sans-serif; /* Fuente del texto */
+             margin-left: 10%;
+             margin-top: 20%;
+            
+        }
+        th, td{
+            padding: 10px; 
+            border: 1px solid #ddd;
+        }
+        .margen{
+            width: 100%;/* Ancho del del elemento */
+            height: 70px;
+            position: fixed;/*mantiene el margen fijo*/
+            background-color: #83a1cd;
+            top: 0;
+            left: 0;
+            
+        }
+       .tableuwu{
+            margin: 20px ;
+            margin: 10px 0 30px 0;
+            margin-left: 10%;
+            border-collapse: collapse; 
+        }
+        .titulounu{
+         text-align: center;
+            
+        }
